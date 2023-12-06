@@ -1,0 +1,48 @@
+.notes-container {
+    width: 70%;
+    padding: 30px;
+    position: absolute;
+    left: 22%;
+
+    >h3 {
+        padding-bottom: 30px;
+    }
+
+    >.note-section {
+        >.mynotes {
+            font-size: 20px;
+            font-weight: 500;
+            padding-bottom: 10px;
+
+            >i {
+                padding-right: 10px;
+            }
+        }
+
+        >.recently-viewed {
+            font-size: 14px;
+            font-weight: 500;
+            color: #5B6B8F;
+            padding-bottom: 30px;
+        }
+    }
+
+    >.mytask {
+
+        >p {
+            font-size: 23px;
+            font-weight: 500;
+            padding: 30px 0px;
+
+            >i {
+                padding-right: 10px;
+            }
+        }
+
+        >.listoftasks {
+            background-color: white;
+            padding: 30px;
+
+        }
+    }
+}

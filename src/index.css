@@ -11,3 +11,102 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  padding: 0%;
+  margin: 0%;
+  background-color: #E3E8F8;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.sidebar-section {
+  padding: 0%;
+  margin: 0%;
+  color: #203562;
+}
+
+.app-container {
+  display: flex;
+
+  >.sidebar {
+      position: fixed;
+      width: 22%;
+      height: 100%;
+      background-color: white;
+      overflow-y: hidden;
+
+      >.user-login {
+          display: flex;
+          justify-content: center;
+          padding-top: 40px;
+
+          >img {
+              border-radius: 50%;
+              width: 70px;
+              height: 70px;
+          }
+
+          >.user-login-details {
+              display: flex;
+              flex-direction: column;
+              padding-left: 15px;
+
+              >p {
+                  font-weight: 500;
+              }
+
+              >.user-name {
+                  font-size: 23px;
+                  font-weight: 600;
+                  padding-bottom: 5px;
+              }
+          }
+      }
+
+      >.sidebar-content {
+          padding-top: 50px;
+          > li {
+             list-style-type: none;
+              font-size: 23px;
+              font-weight: 500;
+              margin-bottom: 30px;
+              padding: 3px 0;
+              width: 230px;
+             
+             
+              > .sidebar-section{
+                text-decoration: none;
+                padding: 5px 0px;
+                margin-right: 20px;
+                
+                >i {
+                    padding: 0px 20px;
+                }
+              }
+            
+
+          }
+
+          >.active, li:hover{
+              background-color: #203562;
+              border-radius: 10px;
+              cursor: pointer;
+              > .sidebar-section{
+                color: white;
+              }
+
+          }
+          
+
+      }
+
+  }
+
+}
