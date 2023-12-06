@@ -1,4 +1,5 @@
-.add-notes-container, .add-task-container {
+.add-notes-container,
+.add-task-container {
     width: 100%;
     height: 300px;
     background-color: white;
@@ -7,7 +8,8 @@
     margin-bottom: 20px;
     overflow: hidden;
 
-    >.add-notes, .add-task {
+    >.add-notes,
+    .add-task {
         display: flex;
         justify-content: space-between;
         overflow-y: hidden;

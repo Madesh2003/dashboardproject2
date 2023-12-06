@@ -8,9 +8,9 @@ import userimg from './assets/userimg.jpeg';
 
 function App() {
   return (
-    <div classNameName="App">
-      <div className="app-container">
-        <div className="sidebar">
+    <div classNameName="App container-fluid">
+      <div className="app-container row">
+        <div className="sidebar col">
           <div className="user-login">
             <img src={userimg} alt="" />
             <div className="user-login-details">
@@ -28,9 +28,9 @@ function App() {
           </ul>
         </div>
         <Routes>
-            <Route path='/pages/home' Component={Home} />
-            <Route path='/pages/notes' Component={Notes} />
-            <Route path='/pages/task' Component={Tasksection} />
+          <Route path='/pages/home' Component={Home} />
+          <Route path='/pages/notes' Component={Notes} />
+          <Route path='/pages/task' Component={Tasksection} />
         </Routes>
       </div>
     </div>
