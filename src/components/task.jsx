@@ -1,32 +1,33 @@
 import React from 'react';
 import './task.css';
-import { useNotes } from '../contexts/notes.context';
-export default function Task() {
-  const { tasks, setTasks } = useNotes();
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTask } from '../Redux/Reducers/tasks.reducer';
 
-  function handleTaskDelete(e, tasksId) {
-    if (e) {
-      let taskscopy = [...tasks];
-      const filteredTask = taskscopy.filter((data) => data.id !== tasksId);
-      setTasks(filteredTask);
-    }
+
+export default function Task() {
+  const { tasks } = useSelector((state) => state.tasksReducer);
+  const dispatcher = useDispatch()
+
+  function handleTasksDelete(taskID) {
+    let filtereddata = tasks.filter((ele) => ele.id !== taskID);
+    dispatcher(deleteTask(filtereddata))
   }
+
 
   return (
     <div>
-      {tasks.map((task, index) => (
+      {tasks.map((data, index) => (
         <div className="task-status ">
-          <div className="task-list" key={`task=${index}`} >
+          <div className="task-list">
             <input className="list-checkbox-1" type="checkbox" />
             <div className="contant">
-              <p className="task-name">{task.title}</p>
-              <p className="days-task">{task.content}</p>
+              <p className="task-name" key={index}>{data.title}</p>
+              <p className="days-task">{data.content}</p>
             </div>
           </div>
-          <button onClick={(e) => handleTaskDelete(e, task.id)} ><i class="fa-regular fa-trash-can"></i></button>
+          <button onClick={() => handleTasksDelete(data.id)}><i class="fa-regular fa-trash-can"></i></button>
         </div>
       ))}
-
     </div>
   )
 }

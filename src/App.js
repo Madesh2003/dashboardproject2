@@ -1,4 +1,3 @@
-//import { Routes, Route, Link } from 'react-router-dom';
 import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Notes from './pages/notes';

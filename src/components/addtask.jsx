@@ -1,38 +1,25 @@
 import React, { useRef } from "react";
-import { useNotes } from "../contexts/notes.context";
 import './addnote.css';
-
-const INITIAL_TASK_MOCK = {
-  id: 0,
-  title: "",
-  content: "",
-};
-
-
+import { addTask } from "../Redux/Reducers/tasks.reducer";
+import { useDispatch } from "react-redux";
 
 export default function Addnote() {
   const titleRef = useRef(null);
   const noteRef = useRef(null);
-  const { tasks, setTasks } = useNotes();
-  function handleaddnote(e) {
+  const dispatcher = useDispatch();
+  function handleaddtask(e) {
     if (titleRef.current.value === "" && noteRef.current.value === "") {
-      alert("Empty tasks will not be accepted")
+      alert("Empty notes will not be accepted")
     } else {
-      let tasksCopy = [...tasks];
-      tasksCopy.push({
-        ...INITIAL_TASK_MOCK,
-        id: tasks.length + 1,
+      dispatcher(addTask({
         title: titleRef.current.value,
-        content: noteRef.current.value,
-      }
-      );
-      setTasks(tasksCopy);
+        content: noteRef.current.value
+      }));
       titleRef.current.value = "";
       noteRef.current.value = "";
     }
   }
 
-  console.log(tasks);
   return (
     <div className="add-notes-container">
       <div className="add-task">
@@ -43,7 +30,7 @@ export default function Addnote() {
         <input ref={titleRef} className="title mb-4 mt-2" type="text" placeholder="Title" /><br />
         <textarea ref={noteRef} className="takenote" placeholder="Take a note..." name="w3review" rows="4" cols="50"></textarea>
         <div className="addtask-btn">
-          <button onClick={(e) => handleaddnote(e)}>Add</button>
+          <button onClick={(e) => handleaddtask(e)}>Add</button>
         </div>
       </div>
     </div>

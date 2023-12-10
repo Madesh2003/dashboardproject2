@@ -1,41 +1,41 @@
 import React from 'react';
 import './card.css';
-import { useNotes } from '../contexts/notes.context';
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTodo } from '../Redux/Reducers/tasks.reducer';
+
 
 export default function Card() {
+    const { notes } = useSelector((state) => state.tasksReducer);
+    const dispatcher = useDispatch();
 
-    const { notes, setNotes } = useNotes();
 
-    function handleNotesDelete(e, noteId) {
-        if (e) {
-            let notescopy = [...notes];
-            const filtereddata = notescopy.filter((data) => data.id !== noteId);
-            setNotes(filtereddata);
-        }
+    function handleNotesDelete(noteId) {
+        let filtereddata = notes.filter((ele) => ele.id !== noteId);
+        dispatcher(deleteTodo(filtereddata))
     }
 
     return (
         <div className='card-div container'>
-            {notes.map((note, index) => (
+            {notes.map((data, index) => (
                 <div className='row'>
                     <div class="card col-12" >
-                        <div class="card-title" key={`note=${index}`}>
+                        <div class="card-title" key={index}>
                             <div class="title">
-                                <h5>{note.title}</h5>
+                                <h5>{data.title}</h5>
                             </div>
                             <div class="card-btn">
-                                <button onClick={(e) => handleNotesDelete(e, note.id)} ><i class="fa-regular fa-trash-can"></i></button>
+                                <button onClick={() => handleNotesDelete(data.id)} ><i class="fa-regular fa-trash-can"></i></button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{note.content}</p>
+                            <p class="card-text">{data.content}</p>
                             <p class="notes-days">Go somewhere</p>
                         </div>
                         <div class="w-100"></div>
                     </div>
                 </div>
-
             ))}
+
         </div>
     )
 }
